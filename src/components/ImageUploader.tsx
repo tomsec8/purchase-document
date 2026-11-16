@@ -20,7 +20,10 @@ export function ImageUploader({ onFiles }: ImageUploaderProps) {
     let tooBig = 0
     let extra = 0
     for (const file of files) {
-      const typeOk = TYPES.has(file.type) || /\.(jpe?g|png|webp)$/i.test(file.name)
+      const typeOk = TYPES.has(file.type) || (
+        (file.type === '' || file.type === 'application/octet-stream') &&
+        /\.(jpe?g|png|webp)$/i.test(file.name)
+      )
       if (!typeOk) {
         wrongType += 1
         continue

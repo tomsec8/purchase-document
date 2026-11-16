@@ -9,6 +9,7 @@ import { Cancelled, extractReceipt, type ProgressUpdate } from './core/extract.t
 import { terminateOcr } from './core/ocr/ocr.engine.ts'
 import type { TemplateId } from './core/export/render-document.ts'
 import { listParsers } from './core/parser/parser.registry.ts'
+import { previewBlob } from './core/preview-url.ts'
 import {
   manualReceipt,
   withLineTotals,
@@ -104,7 +105,7 @@ export default function App() {
         if (run.current !== id) throw new Cancelled()
         const file = files[index]
         if (!file) continue
-        const imageUrl = URL.createObjectURL(file)
+        const imageUrl = URL.createObjectURL(previewBlob(file))
         created.push(imageUrl)
         try {
           const outcome = await extractReceipt(

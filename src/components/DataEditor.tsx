@@ -281,11 +281,22 @@ export function DataEditor({
         <aside className="source-image">
           <h2>Original image</h2>
           {imageName ? <p className="hint">{imageName}</p> : null}
-          <img src={imageUrl} alt="Uploaded order image" />
+          <PreviewImage url={imageUrl} />
         </aside>
       ) : null}
     </form>
   )
+}
+
+function PreviewImage({ url }: { url: string }) {
+  let src: string | undefined
+  try {
+    if (new URL(url).protocol === 'blob:') src = url
+  } catch {
+    src = undefined
+  }
+  if (!src) return null
+  return <img src={src} alt="Uploaded order image" />
 }
 
 function ItemFields({
