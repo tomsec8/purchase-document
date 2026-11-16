@@ -1,0 +1,53 @@
+:root {
+  --ink: #f3ece6;
+  --muted: #c2b3ab;
+  --faint: #8f817a;
+  --line: #3c3336;
+  --line-strong: #53464b;
+  --accent: #9a445c;
+  --accent-soft: #3a242b;
+  --surface: #241e21;
+  --field: #1a1618;
+  --canvas: #141112;
+  --serif: "Times New Roman", Times, Cambria, serif;
+  --sans: "Times New Roman", Times, Cambria, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.45;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
